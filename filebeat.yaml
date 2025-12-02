@@ -10,6 +10,7 @@ data:
     - type: container
       paths:
         - /var/log/containers/*streamlit*.log
+      tail_files: true
     output.elasticsearch:
       hosts: ["elasticsearch:9200"]
     setup.ilm.enabled: false
