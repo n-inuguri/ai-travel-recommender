@@ -28,22 +28,22 @@ spec:
     spec:
       containers:
         - name: elasticsearch
-          image: docker.elastic.co/elasticsearch/elasticsearch:8.19.7
+          image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
           env:
             - name: discovery.type
               value: single-node
             - name: ES_JAVA_OPTS
-              value: "-Xms2g -Xmx2g"
+              value: "-Xms512m -Xmx512m"
             - name: xpack.security.enabled
               value: "false"
           ports:
             - containerPort: 9200
           resources:
             limits:
-              memory: "4Gi"
+              memory: "2Gi"
               cpu: "1"
             requests:
-              memory: "2Gi"
+              memory: "1Gi"
               cpu: "500m"
           volumeMounts:
             - mountPath: /usr/share/elasticsearch/data
