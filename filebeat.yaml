@@ -9,7 +9,7 @@ data:
     filebeat.inputs:
     - type: container
       paths:
-        - /var/log/containers/*ai-travel*.log
+        - /var/log/containers/*streamlit*.log
     output.elasticsearch:
       hosts: ["elasticsearch:9200"]
     setup.ilm.enabled: false
