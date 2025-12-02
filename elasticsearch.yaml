@@ -21,9 +21,9 @@ spec:
               value: single-node
             - name: OPENSEARCH_JAVA_OPTS
               value: "-Xms512m -Xmx512m"
-            - name: plugins.security.disabled
-              value: "true"
             - name: DISABLE_SECURITY_PLUGIN
+              value: "true"
+            - name: DISABLE_INSTALL_DEMO_CONFIG
               value: "true"
           ports:
             - containerPort: 9200
@@ -32,6 +32,12 @@ spec:
               memory: "1Gi"
             limits:
               memory: "1Gi"
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 9200
+            initialDelaySeconds: 30
+            periodSeconds: 10
 ---
 apiVersion: v1
 kind: Service
